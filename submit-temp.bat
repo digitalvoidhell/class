@@ -21,7 +21,7 @@ REM ============================================
 set "REPO=git@github.com:digitalvoidhell/class.git"
 set "BRANCH=main"
 REM set "SSH_KEY=%USERPROFILE%\.ssh\id_ed25519"
-set "SSH_KEY=..\id_ed25519"
+set "SSH_KEY=.\id_ed25519"
 
 REM ============================================
 REM Check Git repository
