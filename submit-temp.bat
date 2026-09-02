@@ -5,7 +5,7 @@ setlocal
 
 # ssh-keygen -t ed25519 -C "your_email@example.com"
 # clip < ~/.ssh/id_ed25519.pub
-# ssh -T git@github.com
+ssh -T git@github.com
 
 
 
