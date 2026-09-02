@@ -3,9 +3,9 @@ setlocal
 
 
 
-# ssh-keygen -t ed25519 -C "your_email@example.com"
-# clip < ~/.ssh/id_ed25519.pub
-ssh -T git@github.com
+REM ssh-keygen -t ed25519 -C "your_email@example.com"
+REM clip < ~/.ssh/id_ed25519.pub
+REM ssh -T git@github.com
 
 
 
