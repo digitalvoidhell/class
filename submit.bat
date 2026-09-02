@@ -6,13 +6,16 @@ set TIMESTAMP=%date% %time%
 
 echo === Starting Git Push (%TIMESTAMP%) ===
 
-:: Stage all changes
+:: 1. Force Git to use Windows native OpenSSH (which has your running service)
+git config --global core.sshCommand "C:/Windows/System32/OpenSSH/ssh.exe"
+
+:: 2. Stage all changes
 git add .
 
-:: Commit with the timestamp message
+:: 3. Commit with the timestamp message
 git commit -m "Backup: %TIMESTAMP%"
 
-:: Push to the remote repository
+:: 4. Push to the remote repository
 git push origin main
 
 echo === Done! ===
