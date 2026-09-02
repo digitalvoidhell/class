@@ -1,18 +1,19 @@
 @echo off
-set GITHUB_USER=digitalvoidhell
-set GITHUB_TOKEN=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
-set REPO_OWNER=digitalvoidhell
-set REPO_NAME=class
-set BRANCH_NAME=main
 
+:: ১. কমিত মেসেজের জন্য বর্তমান সময় সেট করা
 set TIMESTAMP=%date% %time%
+
 echo === Starting Git Push (%TIMESTAMP%) ===
 
+:: ২. সব ফাইল স্টেজিং এ যুক্ত করা
 git add .
+
+:: ৩. টাইমস্ট্যাম্প সহ কমিত করা
 git commit -m "Backup: %TIMESTAMP%"
 
-:: ভ্যারিয়েবলগুলো ব্যবহার করে সরাসরি পুশ করা
-git push https://%GITHUB_USER%:%GITHUB_TOKEN%@://github.com %BRANCH_NAME%
+:: ৪. কোনো ভ্যারিয়েবল ছাড়া সরাসরি টোকেন সহ পুশ করা (এটি উইন্ডোজের সব এরর দূর করবে)
+git push https://github.com main
 
 echo === Done! ===
 pause
+
