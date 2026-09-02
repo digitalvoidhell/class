@@ -1,6 +1,15 @@
 @echo off
 setlocal
 
+
+
+# ssh-keygen -t ed25519 -C "your_email@example.com"
+# clip < ~/.ssh/id_ed25519.pub
+# ssh -T git@github.com
+
+
+
+
 echo ==============================
 echo Git SSH Push/Pull Automation
 echo ==============================
