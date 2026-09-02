@@ -1,18 +1,18 @@
 @echo off
+set GITHUB_USER=digitalvoidhell
+set GITHUB_TOKEN=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
+set REPO_OWNER=digitalvoidhell
+set REPO_NAME=class
+set BRANCH_NAME=main
 
-:: 1. Get current date and time for the commit message
 set TIMESTAMP=%date% %time%
-
 echo === Starting Git Push (%TIMESTAMP%) ===
 
-:: 2. Stage all changes
 git add .
-
-:: 3. Commit with the timestamp message
 git commit -m "Backup: %TIMESTAMP%"
 
-:: 4. Push directly using the token inline (Bypasses Windows URL formatting errors)
-git push https://github.com main
+:: ভ্যারিয়েবলগুলো ব্যবহার করে সরাসরি পুশ করা
+git push https://%GITHUB_USER%:%GITHUB_TOKEN%@://github.com %BRANCH_NAME%
 
 echo === Done! ===
 pause
