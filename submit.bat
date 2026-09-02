@@ -5,18 +5,14 @@ set TIMESTAMP=%date% %time%
 
 echo === Starting Git Push (%TIMESTAMP%) ===
 
-:: 2. Set the remote URL directly with no variable concatenation
-git remote set-url origin https://github.com
-
-:: 3. Stage and commit all changes
+:: 2. Stage all changes
 git add .
+
+:: 3. Commit with the timestamp message
 git commit -m "Backup: %TIMESTAMP%"
 
-:: 4. Push to GitHub
-git push origin main
-
-:: 5. Clean up the URL locally for security
-git remote set-url origin https://github.com
+:: 4. Push directly using the token inline (Bypasses Windows URL formatting errors)
+git push https://github.com main
 
 echo === Done! ===
 pause
