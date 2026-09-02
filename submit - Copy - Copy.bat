@@ -2,7 +2,7 @@
 setlocal
 
 echo ==============================
-echo Git Push/Pull Automation
+echo Git SSH Push/Pull Automation
 echo ==============================
 
 REM Check Git repository
@@ -13,19 +13,35 @@ if errorlevel 1 (
     exit /b 1
 )
 
-REM Set correct GitHub repository
+REM Configure SSH remote
 echo.
-echo Checking GitHub repository...
-git remote set-url origin https://github.com/digitalvoidhell/class.git
+echo [0/4] Checking SSH repository...
+git remote set-url origin git@github.com:digitalvoidhell/class.git
 
 if errorlevel 1 (
-    echo ERROR: Could not configure GitHub remote.
+    echo ERROR: Could not configure GitHub SSH remote.
     pause
     exit /b 1
 )
 
-echo Repository:
-echo https://github.com/digitalvoidhell/class.git
+echo Remote:
+git remote get-url origin
+
+REM Test GitHub SSH connection
+echo.
+echo Testing GitHub SSH connection...
+ssh -T git@github.com 2>&1 | findstr /C:"successfully authenticated" /C:"Hi digitalvoidhell"
+
+if errorlevel 1 (
+    echo.
+    echo ERROR: SSH authentication failed.
+    echo.
+    echo Make sure your SSH key is added to GitHub:
+    echo https://github.com/settings/keys
+    echo.
+    pause
+    exit /b 1
+)
 
 REM Pull latest changes
 echo.
@@ -61,7 +77,7 @@ if errorlevel 1 (
     echo [3/4] No changes to commit.
 )
 
-REM Push
+REM Push changes
 echo.
 echo [4/4] Pushing changes...
 git push origin main
